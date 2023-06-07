@@ -1,9 +1,16 @@
+import SlimSelect from 'slim-select';
+import Notiflix from 'notiflix';
+
 const refs = {
     breedSl: document.querySelector(`.breed-select`),
     loaderEl: document.querySelector(`.loader`),
     errorEl: document.querySelector(`.error`),
     catIn: document.querySelector(`.cat-info`)
 }
+
+new SlimSelect({
+    select: id = "selectElement"
+})
 
 const options = {
     headers: {
@@ -37,9 +44,10 @@ createOptions();
 function fetchBreeds(catId) {
     return fetch(`https://api.thecatapi.com/v1/images/${catId}`, options).then((res) => {
         if (!res.ok) {
-            refs.errorEl.style.display = "block";
+            Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
             refs.catIn.style.display = "none";
-            refs.breedSl.style.display = "none";
+            // refs.errorEl.style.display = "block";
+            // refs.breedSl.style.display = "none";
         } else {
             refs.catIn.style.display = "flex";
             return res.json()
