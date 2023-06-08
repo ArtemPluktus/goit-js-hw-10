@@ -8,9 +8,9 @@ const refs = {
     catIn: document.querySelector(`.cat-info`)
 }
 
-new SlimSelect({
-    select: id = "selectElement"
-})
+// new SlimSelect({
+//     select: id = "#selectElement"
+// })
 
 const options = {
     headers: {
